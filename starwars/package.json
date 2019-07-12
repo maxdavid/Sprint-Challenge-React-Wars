@@ -30,6 +30,7 @@
     ]
   },
   "devDependencies": {
+    "react-test-renderer": "^16.8.6",
     "tailwindcss": "^1.0.5"
   }
 }
