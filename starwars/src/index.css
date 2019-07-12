@@ -1,7 +1,9 @@
+@import url('https://fonts.googleapis.com/css?family=Audiowide|Lato:400,700&display=swap');
+
 body {
   margin: 0;
   padding: 0;
-  font-family: sans-serif;
+  font-family: 'Lato', sans-serif;
   background-image: url('./sw-bg.jpg');
   background-size: cover;
 }
