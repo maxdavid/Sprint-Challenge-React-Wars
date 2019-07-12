@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import './App.css';
 import Char from './components/Char';
 
 function App() {
@@ -21,9 +20,11 @@ function App() {
   useEffect(() => getCharacters('https://swapi.co/api/people/'), []);
 
   return (
-    <div className='App'>
-      <h1 className='Header'>React Wars</h1>
-      <div className='chars-list'>
+    <div className='text-center'>
+      <h1 className='text-gray-300 text-6xl text-glow font-audiowide'>
+        React Wars
+      </h1>
+      <div className='text-left my-4 mx-auto max-w-2xl'>
         {starwarsChars.map(char => (
           <Char info={char} key={char.url} />
         ))}

@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import './StarWars.scss';
 
 const Char = props => {
   const info = useState(props.info)[0];
@@ -22,20 +21,20 @@ const Char = props => {
 
   const { name, birth_year, height, mass, films } = info;
   return (
-    <div className='char'>
-      <h2>{name}</h2>
-      <ul>
-        <li>
-          Homeworld: <span className='value'>{homeworld}</span>
+    <div className='w-full p-4 bg-graytrans my-4'>
+      <h2 className='text-lg font-bold my-2'>{name}</h2>
+      <ul className='pl-4'>
+        <li className='text-gray-600 mb-2'>
+          Homeworld: <span className='text-black'>{homeworld}</span>
         </li>
-        <li>
-          Birth Year: <span className='value'>{birth_year}cm</span>
+        <li className='text-gray-600 mb-2'>
+          Birth Year: <span className='text-black'>{birth_year}cm</span>
         </li>
-        <li>
-          Height: <span className='value'>{height}cm</span>
+        <li className='text-gray-600 mb-2'>
+          Height: <span className='text-black'>{height}cm</span>
         </li>
-        <li>
-          Weight: <span className='value'>{mass}kg</span>
+        <li className='text-gray-600 mb-2'>
+          Weight: <span className='text-black'>{mass}kg</span>
         </li>
       </ul>
       Appears in {films.length} films
