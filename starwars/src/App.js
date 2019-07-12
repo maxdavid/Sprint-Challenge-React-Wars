@@ -19,18 +19,26 @@ function App() {
 
   useEffect(() => getCharacters('https://swapi.co/api/people/'), []);
 
-  return (
-    <div className='text-center'>
-      <h1 className='text-gray-300 text-6xl text-glow font-audiowide'>
-        React Wars
-      </h1>
-      <div className='text-left my-4 mx-auto max-w-2xl'>
-        {starwarsChars.map(char => (
-          <Char info={char} key={char.url} />
-        ))}
+  if (starwarsChars.length === 0) {
+    return (
+      <h2 className='text-center my-10 text-3xl text-gray-300 text-glow'>
+        Loading...
+      </h2>
+    );
+  } else {
+    return (
+      <div className='text-center'>
+        <h1 className='text-gray-300 text-6xl text-glow font-audiowide'>
+          React Wars
+        </h1>
+        <div className='text-left my-4 mx-auto max-w-2xl'>
+          {starwarsChars.map(char => (
+            <Char info={char} key={char.url} />
+          ))}
+        </div>
       </div>
-    </div>
-  );
+    );
+  }
 }
 
 export default App;

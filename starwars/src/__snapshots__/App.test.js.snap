@@ -1,0 +1,24 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<App /> should match snapshot 1`] = `
+<div
+  className="text-center"
+>
+  <h1
+    className="text-gray-300 text-6xl text-glow font-audiowide"
+  >
+    React Wars
+  </h1>
+  <div
+    className="text-left my-4 mx-auto max-w-2xl"
+  />
+</div>
+`;
+
+exports[`<Char /> should match snapshot 1`] = `
+<h2
+  className="text-center text-gray-400"
+>
+  Loading...
+</h2>
+`;
