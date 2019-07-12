@@ -1,17 +1,33 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import './App.css';
+import Char from './components/Char';
 
-const App = () => {
-  // Try to think through what state you'll need for this app before starting. Then build out
-  // the state properties here.
+function App() {
+  const [starwarsChars, setChars] = useState([]);
 
-  // Fetch characters from the star wars api in an effect hook. Remember, anytime you have a 
-  // side effect in a component, you want to think about which state and/or props it should
-  // sync up with, if any.
+  const getCharacters = URL => {
+    fetch(URL)
+      .then(res => {
+        return res.json();
+      })
+      .then(data => {
+        setChars(data.results);
+      })
+      .catch(err => {
+        throw new Error(err);
+      });
+  };
+
+  useEffect(() => getCharacters('https://swapi.co/api/people/'), []);
 
   return (
-    <div className="App">
-      <h1 className="Header">React Wars</h1>
+    <div className='App'>
+      <h1 className='Header'>React Wars</h1>
+      <div className='chars-list'>
+        {starwarsChars.map(char => (
+          <Char info={char} key={char.url} />
+        ))}
+      </div>
     </div>
   );
 }
