@@ -1,47 +1,46 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import './StarWars.scss';
 
-class Char extends React.Component {
-  constructor(props) {
-    super(props);
-    this.info = props.info;
-    console.log(this.info.name)
-    this.state = {
-      homeworld: ''
-    }
-  }
+const Char = props => {
+  const info = useState(props.info)[0];
+  const [homeworld, setHomeworld] = useState('');
 
-  componentDidMount() {
-    this.getPlanet(this.info.homeworld);
-  }
+  useEffect(() => getPlanet(info.homeworld), []);
 
-  getPlanet(URL) {
+  const getPlanet = URL => {
     fetch(URL)
       .then(res => {
         return res.json();
       })
       .then(data => {
-        this.setState({ homeworld: data.name });
+        setHomeworld(data.name);
       })
       .catch(err => {
         throw new Error(err);
       });
-  }
+  };
 
-  render() {
-    return (
-      <div className='char'>
-        <h2>{this.info.name}</h2>
-        <ul>
-          <li>Homeworld: <span class='value'>{this.state.homeworld}</span></li>
-          <li>Birth Year: <span class='value'>{this.info.birth_year}cm</span></li>
-          <li>Height: <span class='value'>{this.info.height}cm</span></li>
-          <li>Weight: <span class='value'>{this.info.mass}kg</span></li>
-        </ul>
-        Appears in {this.info.films.length} films
-      </div>
-    )
-  }
-}
+  const { name, birth_year, height, mass, films } = info;
+  return (
+    <div className='char'>
+      <h2>{name}</h2>
+      <ul>
+        <li>
+          Homeworld: <span className='value'>{homeworld}</span>
+        </li>
+        <li>
+          Birth Year: <span className='value'>{birth_year}cm</span>
+        </li>
+        <li>
+          Height: <span className='value'>{height}cm</span>
+        </li>
+        <li>
+          Weight: <span className='value'>{mass}kg</span>
+        </li>
+      </ul>
+      Appears in {films.length} films
+    </div>
+  );
+};
 
 export default Char;
